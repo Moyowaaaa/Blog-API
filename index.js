@@ -12,10 +12,11 @@ app.use(bodyParser.json())
 app.use(cors());
 
 
+
 //Database
 async function PostCollection() {
     const client = await mongodb.MongoClient.connect
-    ('mongodb://localhost/Blog' ,{ useUnifiedTopology: true,
+    ('mongodb+srv://moyowa:moyowa@cluster0.y2v6c.mongodb.net/Blog?retryWrites=true&w=majority' ,{ useUnifiedTopology: true,
         useNewUrlParser: true
     
     });
@@ -75,8 +76,7 @@ app.delete('/:id', async(req,res) => {
 })
 
 
-
-
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT,() => console.log(`Lets go on ${PORT}`))
+//production
+app.listen(process.env.PORT || 5000, function(){
+    console.log("HELLO")
+});
